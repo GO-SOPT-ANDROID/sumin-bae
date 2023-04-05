@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GO SOPT Android</string>
+
+    <string name="login_title">Welcome to GO Android !</string>
+    <string name="login_id">ID</string>
+    <string name="prompt_login_id">아이디를 입력하세요.</string>
+    <string name="login_pw">PW</string>
+    <string name="prompt_login_pw">비밀번호를 입력하세요.</string>
+    <string name="login_submit">LOGIN</string>
+    <string name="go_to_signup">SIGN UP</string>
+
+
 </resources>
