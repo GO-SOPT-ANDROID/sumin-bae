@@ -9,5 +9,15 @@
     <string name="login_submit">LOGIN</string>
     <string name="go_to_signup">SIGN UP</string>
 
+    <string name="signup_title">SIGNUP</string>
+    <string name="signup_id">ID</string>
+    <string name="prompt_signup_id">아이디를 입력하세요</string>
+    <string name="signup_pw">PW</string>
+    <string name="prompt_signup_pw">비밀번호를 입력하세요</string>
+    <string name="signup_name">이름</string>
+    <string name="prompt_signup_name">이름을 입력하세요</string>
+    <string name="signup_ability">특기</string>
+    <string name="prompt_signup_ability">특기를 입력하세요</string>
+    <string name="signup_submit">회원가입 완료</string>
 
 </resources>
