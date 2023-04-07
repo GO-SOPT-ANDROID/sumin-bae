@@ -37,6 +37,7 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/prompt_signup_id"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup_id" />
 
     <TextView
@@ -78,6 +79,7 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/prompt_signup_name"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup_name" />
 
     <TextView
@@ -98,6 +100,8 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/prompt_signup_specialty"
+        android:imeOptions="actionDone"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup_specialty" />
 
     <Button
