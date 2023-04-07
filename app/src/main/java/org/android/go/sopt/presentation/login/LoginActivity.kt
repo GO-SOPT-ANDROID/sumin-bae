@@ -3,6 +3,7 @@ package org.android.go.sopt.presentation.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
@@ -11,6 +12,7 @@ import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.presentation.profile.ProfileActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.extention.getParcelable
+import org.android.go.sopt.util.extention.hideKeyboard
 import org.android.go.sopt.util.extention.showSnackbar
 import org.android.go.sopt.util.extention.showToast
 
@@ -23,6 +25,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         addListeners()
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        currentFocus?.hideKeyboard()
+        return super.dispatchTouchEvent(ev)
     }
 
     private fun addListeners() {

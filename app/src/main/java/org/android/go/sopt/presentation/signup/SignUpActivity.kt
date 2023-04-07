@@ -2,11 +2,13 @@ package org.android.go.sopt.presentation.signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivitySignUpBinding
 import org.android.go.sopt.presentation.login.LoginActivity
+import org.android.go.sopt.util.extention.hideKeyboard
 import org.android.go.sopt.util.extention.showSnackbar
 
 class SignUpActivity : AppCompatActivity() {
@@ -17,6 +19,11 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         addListeners()
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        currentFocus?.hideKeyboard()
+        return super.dispatchTouchEvent(ev)
     }
 
     private fun addListeners() {
