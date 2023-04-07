@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.SignUpActivity">
+    tools:context=".presentation.signup.SignUpActivity">
 
     <TextView
         android:id="@+id/tv_signup_title"
@@ -37,7 +37,6 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/prompt_signup_id"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup_id" />
 
     <TextView
@@ -79,29 +78,27 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/prompt_signup_name"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup_name" />
 
     <TextView
-        android:id="@+id/tv_signup_ability"
+        android:id="@+id/tv_signup_specialty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/signup_ability"
+        android:text="@string/signup_specialty"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_signup_name"
         app:layout_constraintTop_toBottomOf="@+id/et_signup_name" />
 
     <EditText
-        android:id="@+id/et_signup_mbti"
+        android:id="@+id/et_signup_specialty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/prompt_signup_ability"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signup_ability" />
+        android:hint="@string/prompt_signup_specialty"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup_specialty" />
 
     <Button
         android:id="@+id/btn_signup_submit"
@@ -109,8 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/signup_submit"
-        app:layout_constraintEnd_toEndOf="@+id/et_signup_mbti"
-        app:layout_constraintStart_toStartOf="@+id/et_signup_mbti"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_mbti" />
+        app:layout_constraintEnd_toEndOf="@+id/et_signup_specialty"
+        app:layout_constraintStart_toStartOf="@+id/et_signup_specialty"
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_specialty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

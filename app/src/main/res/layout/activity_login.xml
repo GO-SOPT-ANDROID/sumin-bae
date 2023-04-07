@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.LoginActivity">
+    tools:context=".presentation.login.LoginActivity">
 
     <TextView
         android:id="@+id/tv_login_title"
@@ -37,7 +37,6 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="10dp"
         android:hint="@string/prompt_login_id"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/tv_login_id" />
 
     <TextView

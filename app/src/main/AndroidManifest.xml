@@ -12,13 +12,13 @@
         android:theme="@style/Theme.GOSOPTAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ProfileActivity"
+            android:name=".presentation.profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.SignUpActivity"
+            android:name=".presentation.signup.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.LoginActivity"
+            android:name=".presentation.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
