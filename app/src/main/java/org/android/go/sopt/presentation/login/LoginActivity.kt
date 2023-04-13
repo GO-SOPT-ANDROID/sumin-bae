@@ -53,14 +53,14 @@ class LoginActivity : AppCompatActivity() {
             val inputId = etLoginId.text.toString()
             val inputPw = etLoginPw.text.toString()
 
-            if (inputId.isEmpty() && inputPw.isEmpty()) {
+            if (inputId.isEmpty() || inputPw.isEmpty()) {
                 return root.showSnackbar(R.string.login_empty)
             }
             if (!isMember(inputId, inputPw, userInfo?.id, userInfo?.pw)) {
                 return root.showSnackbar(R.string.login_fail)
             }
         }
-        this.showToast(R.string.login_success)
+        showToast(R.string.login_success)
         moveToProfile()
     }
 
@@ -72,9 +72,7 @@ class LoginActivity : AppCompatActivity() {
     private fun moveToProfile() {
         Intent(this, ProfileActivity::class.java).apply {
             putExtra("info", userInfo)
-            setResult(RESULT_OK, this)
-            startActivity(this)
-        }
+        }.run(::startActivity)
     }
 
     // 회원가입 페이지에서 입력한 정보 가져오기
