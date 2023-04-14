@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivityLoginBinding
-import org.android.go.sopt.presentation.profile.ProfileActivity
+import org.android.go.sopt.presentation.home.HomeActivity
+import org.android.go.sopt.presentation.home.ProfileActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.extention.getParcelable
 import org.android.go.sopt.util.extention.hideKeyboard
@@ -61,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         showToast(R.string.login_success)
-        moveToProfile()
+        moveToHome()
     }
 
     // 로그인 성공 여부 판단
@@ -69,8 +70,8 @@ class LoginActivity : AppCompatActivity() {
         inputId == id && inputPw == pw
 
     // 자기소개 페이지로 이동
-    private fun moveToProfile() {
-        Intent(this, ProfileActivity::class.java).apply {
+    private fun moveToHome() {
+        Intent(this, HomeActivity::class.java).apply {
             putExtra("info", userInfo)
         }.run(::startActivity)
     }

@@ -1,8 +1,7 @@
-package org.android.go.sopt.presentation.profile
+package org.android.go.sopt.presentation.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import org.android.go.sopt.R
 import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivityProfileBinding
 import org.android.go.sopt.util.extention.getParcelable
