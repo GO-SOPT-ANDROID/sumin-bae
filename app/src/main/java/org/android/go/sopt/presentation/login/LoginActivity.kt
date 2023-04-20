@@ -10,7 +10,6 @@ import org.android.go.sopt.R
 import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.presentation.home.HomeActivity
-import org.android.go.sopt.presentation.home.ProfileActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.extention.getParcelable
 import org.android.go.sopt.util.extention.hideKeyboard

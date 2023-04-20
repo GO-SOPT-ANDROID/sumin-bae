@@ -27,6 +27,8 @@ class MyPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // TODO: 로컬 저장소 구현 후 자기소개 페이지 구성
     }
 
     override fun onDestroyView() {
