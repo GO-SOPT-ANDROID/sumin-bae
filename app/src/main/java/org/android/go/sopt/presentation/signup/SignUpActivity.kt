@@ -6,27 +6,20 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.data.User
+import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.databinding.ActivitySignUpBinding
 import org.android.go.sopt.presentation.login.LoginActivity
+import org.android.go.sopt.util.binding.ViewBindingActivity
 import org.android.go.sopt.util.extention.hideKeyboard
 import org.android.go.sopt.util.extention.showSnackbar
 
-class SignUpActivity : AppCompatActivity() {
-    private val binding by lazy { ActivitySignUpBinding.inflate(layoutInflater) }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
-        addListeners()
-    }
-
+class SignUpActivity : ViewBindingActivity<ActivitySignUpBinding>(ActivitySignUpBinding::inflate) {
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         currentFocus?.hideKeyboard()
         return super.dispatchTouchEvent(ev)
     }
 
-    private fun addListeners() {
+    override fun addListeners() {
         binding.btnSignupSubmit.setOnClickListener {
             executeSignup()
         }

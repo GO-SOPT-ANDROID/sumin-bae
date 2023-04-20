@@ -2,37 +2,28 @@ package org.android.go.sopt.presentation.login
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
 import android.view.MotionEvent
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.presentation.home.HomeActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
+import org.android.go.sopt.util.binding.ViewBindingActivity
 import org.android.go.sopt.util.extention.getParcelable
 import org.android.go.sopt.util.extention.hideKeyboard
 import org.android.go.sopt.util.extention.showSnackbar
 import org.android.go.sopt.util.extention.showToast
 
-class LoginActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
+class LoginActivity : ViewBindingActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
     private var userInfo: User? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
-        addListeners()
-    }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         currentFocus?.hideKeyboard()
         return super.dispatchTouchEvent(ev)
     }
 
-    private fun addListeners() {
+    override fun addListeners() {
         binding.btnLoginSubmit.setOnClickListener {
             executeLogin()
         }

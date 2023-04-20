@@ -7,15 +7,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivityHomeBinding
+import org.android.go.sopt.databinding.ActivityLoginBinding
+import org.android.go.sopt.util.binding.ViewBindingActivity
 
-class HomeActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
+class HomeActivity : ViewBindingActivity<ActivityHomeBinding>(ActivityHomeBinding::inflate) {
     private lateinit var navController: NavController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
+    override fun constructLayout() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fcv_nav_host) as NavHostFragment
         navController = navHostFragment.navController

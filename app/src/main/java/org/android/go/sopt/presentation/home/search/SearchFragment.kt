@@ -6,31 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import org.android.go.sopt.databinding.FragmentGalleryBinding
 import org.android.go.sopt.databinding.FragmentSearchBinding
+import org.android.go.sopt.util.binding.ViewBindingFragment
 
-class SearchFragment : Fragment() {
-    private var _binding: FragmentSearchBinding? = null
-    private val binding: FragmentSearchBinding
-        get() = requireNotNull(_binding) { "value of binding is null" }
+class SearchFragment :
+    ViewBindingFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

@@ -19,7 +19,7 @@
         android:id="@+id/follower_fragment"
         android:name="org.android.go.sopt.presentation.home.follower.FollowerFragment"
         android:label="fragment_follower"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_follower" />
     <fragment
         android:id="@+id/search_fragment"
         android:name="org.android.go.sopt.presentation.home.search.SearchFragment"
