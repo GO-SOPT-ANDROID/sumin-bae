@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/color_list_fragment">
+
+    <fragment
+        android:id="@+id/gallery_fragment"
+        android:name="org.android.go.sopt.presentation.home.gallery.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/my_page_fragment"
+        android:name="org.android.go.sopt.presentation.home.mypage.MyPageFragment"
+        android:label="fragment_my_page"
+        tools:layout="@layout/fragment_my_page" />
+    <fragment
+        android:id="@+id/color_list_fragment"
+        android:name="org.android.go.sopt.presentation.home.color.ColorListFragment"
+        android:label="fragment_follower"
+        tools:layout="@layout/fragment_color_list" />
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="org.android.go.sopt.presentation.home.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+
+</navigation>

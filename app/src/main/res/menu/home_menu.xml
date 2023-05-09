@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/color_list_fragment"
+        android:icon="@drawable/ic_color_list"
+        android:title="@string/menu_color_list" />
+    <item
+        android:id="@+id/gallery_fragment"
+        android:icon="@drawable/ic_gallery"
+        android:title="@string/menu_gallery" />
+    <item
+        android:id="@+id/search_fragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_search" />
+    <item
+        android:id="@+id/my_page_fragment"
+        android:icon="@drawable/ic_my_page"
+        android:title="@string/menu_my_page" />
+</menu>
