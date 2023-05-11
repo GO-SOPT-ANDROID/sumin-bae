@@ -40,4 +40,5 @@
     <string name="color_name">Blue</string>
     <string name="color_hex">#0000FF</string>
     <string name="color_list_header">Blue Palette</string>
+    <string name="color_item_delete">삭제하기</string>
 </resources>
