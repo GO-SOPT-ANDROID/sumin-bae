@@ -20,4 +20,8 @@ class ColorListFragment :
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
+
+    fun scrollToTop() {
+        binding.rvColors.smoothScrollToPosition(0)
+    }
 }
