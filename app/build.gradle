@@ -48,9 +48,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
     // recyclerview
     implementation "androidx.recyclerview:recyclerview:$rvVersion"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
 }
