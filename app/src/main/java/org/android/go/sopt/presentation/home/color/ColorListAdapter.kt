@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import org.android.go.sopt.data.Color
 import org.android.go.sopt.databinding.ItemColorBinding
 
-class ColorItemAdapter(context: Context) : ListAdapter<Color, ColorItemViewHolder>(diffUtil) {
+class ColorListAdapter(context: Context) : ListAdapter<Color, ColorListViewHolder>(diffUtil) {
     private val inflater by lazy { LayoutInflater.from(context) }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorListViewHolder {
         val binding = ItemColorBinding.inflate(inflater, parent, false)
-        return ColorItemViewHolder(binding)
+        return ColorListViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ColorItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ColorListViewHolder, position: Int) {
         holder.onBind(getItem(position))
     }
 
@@ -34,7 +34,7 @@ class ColorItemAdapter(context: Context) : ListAdapter<Color, ColorItemViewHolde
     }
 }
 
-class ColorItemViewHolder(
+class ColorListViewHolder(
     private val binding: ItemColorBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(colorData: Color) {
