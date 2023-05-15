@@ -1,78 +1,58 @@
 package org.android.go.sopt.presentation.login
 
-import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.view.MotionEvent
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import org.android.go.sopt.R
-import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivityLoginBinding
+import org.android.go.sopt.presentation.AuthState
 import org.android.go.sopt.presentation.home.HomeActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
-import org.android.go.sopt.util.binding.ViewBindingActivity
-import org.android.go.sopt.util.extention.getParcelable
+import org.android.go.sopt.util.binding.BindingActivity
 import org.android.go.sopt.util.extention.hideKeyboard
 import org.android.go.sopt.util.extention.showSnackbar
 import org.android.go.sopt.util.extention.showToast
 
-class LoginActivity : ViewBindingActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
-    private var userInfo: User? = null
+class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
+    private val viewModel by viewModels<LoginViewModel>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        with(binding) {
+            vm = viewModel
+            lifecycleOwner = this@LoginActivity
+        }
+        addListeners()
+        addObservers()
+    }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         currentFocus?.hideKeyboard()
         return super.dispatchTouchEvent(ev)
     }
 
-    override fun addListeners() {
-        binding.btnLoginSubmit.setOnClickListener {
-            executeLogin()
-        }
+    private fun addListeners() {
         binding.btnToSignup.setOnClickListener {
-            with(binding) {
-                etLoginId.text.clear()
-                etLoginPw.text.clear()
-            }
-            Intent(this, SignUpActivity::class.java).run {
-                getContent.launch(this)
-            }
+            Intent(this, SignUpActivity::class.java).run(::startActivity)
         }
     }
 
-    // 성공 여부에 따른 실행 동작
-    private fun executeLogin() {
-        with(binding) {
-            val inputId = etLoginId.text.toString()
-            val inputPw = etLoginPw.text.toString()
-
-            if (inputId.isEmpty() || inputPw.isEmpty()) {
-                return root.showSnackbar(R.string.login_empty)
-            }
-            if (!isMember(inputId, inputPw, userInfo?.id, userInfo?.pw)) {
-                return root.showSnackbar(R.string.login_fail)
+    private fun addObservers() {
+        viewModel.result.observe(this) {
+            when (it) {
+                AuthState.Empty -> binding.root.showSnackbar("아이디 또는 비밀번호를 입력해주세요")
+                AuthState.Success -> {
+                    this.showToast("로그인 성공!")
+                    moveToHome()
+                }
+                AuthState.Failure -> binding.root.showSnackbar("아이디 또는 비밀번호가 달라요")
+                AuthState.Error -> binding.root.showSnackbar("서버에 문제가 발생했어요")
             }
         }
-        showToast(R.string.login_success)
-        moveToHome()
     }
-
-    // 로그인 성공 여부 판단
-    private fun isMember(inputId: String, inputPw: String, id: String?, pw: String?): Boolean =
-        inputId == id && inputPw == pw
 
     // 자기소개 페이지로 이동
     private fun moveToHome() {
-        Intent(this, HomeActivity::class.java).apply {
-            putExtra("info", userInfo)
-        }.run(::startActivity)
-    }
-
-    // 회원가입 페이지에서 입력한 정보 가져오기
-    private val getContent = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            binding.root.showSnackbar(R.string.signup_success)
-            userInfo = result.data?.getParcelable("info", User::class.java)
-        }
+        Intent(this, HomeActivity::class.java).run(::startActivity)
     }
 }
