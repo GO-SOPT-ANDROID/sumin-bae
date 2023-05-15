@@ -3,59 +3,54 @@ package org.android.go.sopt.presentation.signup
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import org.android.go.sopt.R
 import org.android.go.sopt.data.User
 import org.android.go.sopt.databinding.ActivityLoginBinding
 import org.android.go.sopt.databinding.ActivitySignUpBinding
+import org.android.go.sopt.presentation.AuthState
 import org.android.go.sopt.presentation.login.LoginActivity
+import org.android.go.sopt.presentation.login.LoginViewModel
+import org.android.go.sopt.util.binding.BindingActivity
 import org.android.go.sopt.util.binding.ViewBindingActivity
 import org.android.go.sopt.util.extention.hideKeyboard
 import org.android.go.sopt.util.extention.showSnackbar
+import org.android.go.sopt.util.extention.showToast
 
-class SignUpActivity : ViewBindingActivity<ActivitySignUpBinding>(ActivitySignUpBinding::inflate) {
+class SignUpActivity: BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
+    private val viewModel by viewModels<SignUpViewModel>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        with(binding) {
+            vm = viewModel
+            lifecycleOwner = this@SignUpActivity
+        }
+        addObservers()
+    }
+
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         currentFocus?.hideKeyboard()
         return super.dispatchTouchEvent(ev)
     }
 
-    override fun addListeners() {
-        binding.btnSignupSubmit.setOnClickListener {
-            executeSignup()
-        }
-    }
-
-    // 회원가입 성공 조건
-    private fun isValidId(id: String): Boolean = id.length in 6..10
-    private fun isValidPw(pw: String): Boolean = pw.length in 8..12
-
-    // 회원가입 성공 여부 판단
-    private fun executeSignup() {
-        with(binding) {
-            val inputId = etSignupId.text.toString()
-            val inputPw = etSignupPw.text.toString()
-            val inputName = etSignupName.text.toString()
-            val inputSpecialty = etSignupSpecialty.text.toString()
-
-            if (!isValidId(inputId)) {
-                return root.showSnackbar(R.string.signup_id_fail)
+    private fun addObservers() {
+        viewModel.result.observe(this) {
+            when (it) {
+                AuthState.Success -> {
+                    showToast("회원가입 성공!")
+                    moveToLogin()
+                }
+                AuthState.Failure -> binding.root.showSnackbar("이름을 입력해주세요")
+                AuthState.Error -> binding.root.showSnackbar("서버에 문제가 발생했어요")
+                else -> binding.root.showSnackbar("몰?루")
             }
-            if (!isValidPw(inputPw)) {
-                return root.showSnackbar(R.string.signup_pw_fail)
-            }
-
-            moveToLogin(
-                User(inputId, inputPw, inputName, inputSpecialty)
-            )
         }
     }
 
     // 로그인 페이지로 이동
-    private fun moveToLogin(user: User) {
-        Intent(this, LoginActivity::class.java).apply {
-            putExtra("info", user)
-            setResult(RESULT_OK, this)
-        }
+    private fun moveToLogin() {
+        Intent(this, LoginActivity::class.java)
         finish()
     }
 }
