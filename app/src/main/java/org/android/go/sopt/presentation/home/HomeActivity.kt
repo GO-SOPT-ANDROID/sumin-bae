@@ -5,7 +5,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivityHomeBinding
-import org.android.go.sopt.presentation.home.color.ColorListFragment
+import org.android.go.sopt.presentation.home.follower.FollowerListFragment
 import org.android.go.sopt.util.binding.ViewBindingActivity
 
 class HomeActivity : ViewBindingActivity<ActivityHomeBinding>(ActivityHomeBinding::inflate) {
@@ -19,9 +19,9 @@ class HomeActivity : ViewBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
         // TODO: constructLayout() 밖으로 옮기기
         binding.bnvMain.setOnItemReselectedListener {
             when (it.itemId) {
-                R.id.color_list_fragment -> {
+                R.id.follower_list_fragment -> {
                     val currentFragment = navHostFragment.childFragmentManager.fragments.first()
-                    if (currentFragment is ColorListFragment) {
+                    if (currentFragment is FollowerListFragment) {
                         currentFragment.scrollToTop()
                     }
                 }

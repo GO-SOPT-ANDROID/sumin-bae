@@ -1,9 +1,9 @@
-package org.android.go.sopt.presentation.home.color
+package org.android.go.sopt.presentation.home.follower
 
 import androidx.lifecycle.ViewModel
 import org.android.go.sopt.data.Color
 
-class ColorListViewModel : ViewModel() {
+class FollowerListViewModel : ViewModel() {
     val colorList = listOf(
         Color(name = "Cold Mist", hex = "#EFF8FE"),
         Color(name = "Baby Blue", hex = "#BBE1F5"),

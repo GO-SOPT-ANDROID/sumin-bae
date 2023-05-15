@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.color.ColorListFragment">
+    tools:context=".presentation.home.follower.FollowerListFragment">
 
     <Button
         android:id="@+id/btn_color_delete"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/color_item_delete"
+        android:text="@string/follower_item_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_color_delete"
-        tools:listitem="@layout/item_color" />
+        tools:listitem="@layout/item_follower" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

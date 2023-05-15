@@ -1,4 +1,4 @@
-package org.android.go.sopt.presentation.home.color
+package org.android.go.sopt.presentation.home.follower
 
 import android.content.Context
 import android.view.LayoutInflater

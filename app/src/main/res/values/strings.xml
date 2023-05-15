@@ -32,13 +32,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="menu_color_list">팔레트</string>
+    <string name="menu_follower_list">팔로워</string>
     <string name="menu_gallery">갤러리</string>
     <string name="menu_search">검색</string>
     <string name="menu_my_page">내 정보</string>
 
-    <string name="color_name">Blue</string>
-    <string name="color_hex">#0000FF</string>
-    <string name="color_list_header">Blue Palette</string>
-    <string name="color_item_delete">삭제하기</string>
+    <string name="follower_name">Jasmine</string>
+    <string name="follower_email">tnals08019@gmail.com</string>
+    <string name="follower_list_header">Follower List</string>
+    <string name="follower_item_delete">언팔로우</string>
 </resources>
