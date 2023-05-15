@@ -7,7 +7,7 @@
     tools:context=".presentation.home.follower.FollowerListFragment">
 
     <Button
-        android:id="@+id/btn_color_delete"
+        android:id="@+id/btn_follower_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_colors"
+        android:id="@+id/rv_followers"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_color_delete"
+        app:layout_constraintTop_toBottomOf="@+id/btn_follower_delete"
         tools:listitem="@layout/item_follower" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
