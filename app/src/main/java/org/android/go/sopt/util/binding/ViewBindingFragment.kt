@@ -22,18 +22,8 @@ abstract class ViewBindingFragment<B : ViewBinding>(
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        constructLayout()
-        addListeners()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-    open fun constructLayout() {}
-    open fun addListeners() {}
 }

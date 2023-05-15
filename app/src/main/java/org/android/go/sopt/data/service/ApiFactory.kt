@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import kotlinx.serialization.json.Json
 import org.android.go.sopt.BuildConfig.AUTH_BASE_URL
 import okhttp3.MediaType.Companion.toMediaType
+import org.android.go.sopt.BuildConfig.REQRES_BASE_URL
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -13,9 +14,18 @@ object ApiFactory {
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
-    inline fun <reified T> create(): T = retrofitAuth.create<T>(T::class.java)
+    val retrofitReqres: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(REQRES_BASE_URL)
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .build()
+    }
+
+    inline fun <reified T> createAuth(): T = retrofitAuth.create<T>(T::class.java)
+    inline fun <reified T> createFollower(): T = retrofitReqres.create<T>(T::class.java)
 }
 
 object ServicePool {
-    val authService = ApiFactory.create<AuthService>()
+    val authService = ApiFactory.createAuth<AuthService>()
+    val reqresService = ApiFactory.createFollower<ReqresService>()
 }

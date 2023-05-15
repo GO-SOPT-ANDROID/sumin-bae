@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import androidx.activity.viewModels
 import org.android.go.sopt.R
 import org.android.go.sopt.databinding.ActivityLoginBinding
-import org.android.go.sopt.presentation.AuthState
+import org.android.go.sopt.presentation.UiState
 import org.android.go.sopt.presentation.home.HomeActivity
 import org.android.go.sopt.presentation.signup.SignUpActivity
 import org.android.go.sopt.util.binding.BindingActivity
@@ -40,13 +40,13 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     private fun addObservers() {
         viewModel.result.observe(this) {
             when (it) {
-                AuthState.Empty -> binding.root.showSnackbar("아이디 또는 비밀번호를 입력해주세요")
-                AuthState.Success -> {
+                UiState.Empty -> binding.root.showSnackbar("아이디 또는 비밀번호를 입력해주세요")
+                UiState.Success -> {
                     this.showToast("로그인 성공!")
                     moveToHome()
                 }
-                AuthState.Failure -> binding.root.showSnackbar("아이디 또는 비밀번호가 달라요")
-                AuthState.Error -> binding.root.showSnackbar("서버에 문제가 발생했어요")
+                UiState.Failure -> binding.root.showSnackbar("아이디 또는 비밀번호가 달라요")
+                UiState.Error -> binding.root.showSnackbar("서버에 문제가 발생했어요")
             }
         }
     }

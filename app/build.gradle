@@ -22,6 +22,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "AUTH_BASE_URL", properties["auth.base.url"]
+        buildConfigField "String", "REQRES_BASE_URL", properties["reqres.base.url"]
     }
 
     buildTypes {
@@ -71,4 +72,7 @@ dependencies {
     // define any required OkHttp artifacts without version
     implementation"com.squareup.okhttp3:okhttp"
     implementation"com.squareup.okhttp3:logging-interceptor"
+
+    // coil
+    implementation("io.coil-kt:coil:2.2.2")
 }

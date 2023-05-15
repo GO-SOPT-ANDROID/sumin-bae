@@ -13,7 +13,7 @@ abstract class BindingFragment<Binding : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,
 ) : Fragment() {
     private var _binding: Binding? = null
-    private val binding get() = requireNotNull(_binding) { "value of _binding is null on ${this::class.java.simpleName}" }
+    val binding get() = requireNotNull(_binding) { "value of _binding is null on ${this::class.java.simpleName}" }
 
     override fun onCreateView(
         inflater: LayoutInflater,

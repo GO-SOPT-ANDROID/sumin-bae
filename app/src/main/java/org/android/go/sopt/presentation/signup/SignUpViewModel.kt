@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import org.android.go.sopt.data.model.request.RequestSignUpDto
 import org.android.go.sopt.data.model.response.ResponseSignUpDto
 import org.android.go.sopt.data.service.ServicePool
-import org.android.go.sopt.presentation.AuthState
+import org.android.go.sopt.presentation.UiState
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,8 +20,8 @@ class SignUpViewModel : ViewModel() {
     private val authService = ServicePool.authService
 
     // 회원가입 상태 확인용 변수
-    private val _result = MutableLiveData<AuthState>()
-    val result: LiveData<AuthState>
+    private val _result = MutableLiveData<UiState>()
+    val result: LiveData<UiState>
         get() = _result
 
     // 아이디, 비밀번호 유효 체크
@@ -42,16 +42,16 @@ class SignUpViewModel : ViewModel() {
             ) {
                 // 200번대
                 if (response.isSuccessful) {
-                    _result.value = AuthState.Success
+                    _result.value = UiState.Success
                 // 400번대 등등
                 } else {
-                    _result.value = AuthState.Failure
+                    _result.value = UiState.Failure
                 }
             }
 
             // 500번대
             override fun onFailure(call: Call<ResponseSignUpDto>, t: Throwable) {
-                _result.value = AuthState.Error
+                _result.value = UiState.Error
             }
         })
     }
