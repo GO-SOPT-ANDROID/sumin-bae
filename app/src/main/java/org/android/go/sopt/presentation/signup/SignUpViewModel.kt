@@ -17,7 +17,7 @@ class SignUpViewModel : ViewModel() {
     val inputPw = MutableLiveData("")
     val inputName = MutableLiveData("")
     val inputSkill = MutableLiveData("")
-    private val authService = ServicePool.authService
+    private val soptService = ServicePool.soptService
 
     // 회원가입 상태 확인용 변수
     private val _result = MutableLiveData<UiState>()
@@ -33,7 +33,7 @@ class SignUpViewModel : ViewModel() {
 
     // 회원가입
     fun signup(id: String, pw: String, name: String, skill: String) {
-        authService.signup(
+        soptService.signup(
             RequestSignUpDto(id, pw, name, skill)
         ).enqueue(object : Callback<ResponseSignUpDto> {
             override fun onResponse(

@@ -14,7 +14,7 @@ import retrofit2.Response
 class LoginViewModel: ViewModel() {
     val inputId = MutableLiveData("")
     val inputPw = MutableLiveData("")
-    private val authService = ServicePool.authService
+    private val soptService = ServicePool.soptService
 
     // 로그인 상태 확인용 변수
     private val _result = MutableLiveData<UiState>()
@@ -27,7 +27,7 @@ class LoginViewModel: ViewModel() {
              _result.value = UiState.Empty
              return
          }
-        authService.login(
+        soptService.login(
             RequestLoginDto(id, pw)
         ).enqueue(object: Callback<ResponseLoginDto> {
             override fun onResponse(
