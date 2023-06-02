@@ -9,22 +9,22 @@ import com.google.android.material.snackbar.Snackbar
 
 // 화면 전체
 fun View.showSnackbar(
-    @StringRes messageId: Int,
+    message: String,
     duration: Int = Snackbar.LENGTH_SHORT,
 ) {
     Snackbar
-        .make(this, messageId, duration)
+        .make(this, message, duration)
         .show()
 }
 
 // 해당 뷰 위로 올릴 때
 fun View.showSnackbar(
-    @StringRes messageId: Int,
+    message: String,
     anchor: Int,
     duration: Int = Snackbar.LENGTH_SHORT,
 ) {
     Snackbar
-        .make(this, messageId, duration)
+        .make(this, message, duration)
         .setAnchorView(anchor)
         .show()
 }

@@ -5,8 +5,8 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 
 fun Context.showToast(
-    @StringRes messageId: Int,
+    message: String,
     duration: Int = Toast.LENGTH_SHORT,
 ) {
-    Toast.makeText(this, messageId, duration).show()
+    Toast.makeText(this, message, duration).show()
 }
